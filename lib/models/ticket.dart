@@ -1,0 +1,13 @@
+import 'package:flutter/widgets.dart';
+
+/*class Ticket{
+  final String title;
+  Ticket({@required this.title}):assert(title!=null);
+}*/
+
+class Ticket {
+  final String _title;
+  Ticket({@required title}) : _title = title;
+
+  String get title => _title ?? "Untitled";
+}
