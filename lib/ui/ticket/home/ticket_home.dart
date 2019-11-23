@@ -1,22 +1,27 @@
-import 'package:keep/data/ticket_list_model.dart';
-import 'package:keep/models/ticket.dart';
-import 'package:keep/ui/ticket/home/ticket_create.dart';
-import 'package:provider/provider.dart';
 import 'ticket_item.dart';
+import '../../../data/ticket_list_model.dart';
+import '../../../models/ticket.dart';
+import '../../../ui/ticket/home/ticket_create.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 
 class TicketHome extends StatelessWidget {
+  _removeTicket(context, id) {
+    Provider.of<TicketListModel>(context).removeTicket(id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('Tickets'),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (BuildContext context) {
-                return TicketCreate();
+            return TicketCreate();
           }));
         },
       ),
@@ -27,7 +32,11 @@ class TicketHome extends StatelessWidget {
             shrinkWrap: true,
             itemCount: ticketListModel.tickets.length,
             itemBuilder: (BuildContext context, int index) {
-              return TicketItem(title: ticketListModel.tickets[index]?.title);
+              final Ticket ticket = ticketListModel.tickets[index];
+              return TicketItem(
+                ticket: ticket,
+                removeTicket: () => _removeTicket(context, ticket.id),
+              );
             },
           );
         },
