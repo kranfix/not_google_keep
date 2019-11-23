@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:keep/data/ticket_list_model.dart';
 import 'package:keep/models/ticket.dart';
 import 'package:keep/ui/widgets/keep_button.dart';
+import 'package:provider/provider.dart';
 
 class TicketCreate extends StatefulWidget {
   @override
@@ -8,7 +10,7 @@ class TicketCreate extends StatefulWidget {
 }
 
 class _TicketCreateState extends State<TicketCreate> {
-  Ticket ticket = Ticket();
+  Ticket _ticket = Ticket();
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -20,6 +22,9 @@ class _TicketCreateState extends State<TicketCreate> {
         child: Column(
           children: <Widget>[
             TextFormField(
+              onChanged: (value){
+                _ticket.title = value;
+              },
               validator: (value) {
                 return value == "" ? "El titulo no puede estar vacio" : null;
               },
@@ -36,7 +41,8 @@ class _TicketCreateState extends State<TicketCreate> {
                   child: Text("Guardar ticket"),
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
-
+                        Provider.of<TicketListModel>(context).addTicket(_ticket);
+                        Navigator.of(context).pop();
                     } else {
                       Scaffold.of(context).showSnackBar(SnackBar(
                         content: Text("Error"),

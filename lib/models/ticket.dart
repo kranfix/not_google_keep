@@ -6,8 +6,9 @@ import 'package:flutter/widgets.dart';
 }*/
 
 class Ticket {
-  final String _title;
+  String _title;
   Ticket({@required title}) : _title = title;
 
+  set title(String title) => _title = title;
   String get title => _title ?? "Untitled";
 }
