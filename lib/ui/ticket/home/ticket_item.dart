@@ -5,12 +5,17 @@ class TicketItem extends StatelessWidget {
   TicketItem({this.title});
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(Icons.person),
-      title: Container(
-        height: 50.0,
-        width: 50.0,
-        child: Text(title),
+    return Container(
+      height: 100.0,
+      width: 100.0,
+      margin: EdgeInsets.all(5.0),
+      decoration: BoxDecoration(
+        color: Colors.yellow,
+        borderRadius: BorderRadius.all(Radius.circular(30.0)),
+      ),
+      child: ListTile(
+        leading: Icon(Icons.person),
+        title: Text(title),
       ),
     );
   }
