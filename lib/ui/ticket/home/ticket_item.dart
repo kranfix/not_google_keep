@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import '../../../models/ticket.dart';
 
 class TicketItem extends StatelessWidget {
-  TicketItem({@required this.ticket, this.removeTicket});
+  TicketItem({
+    @required this.ticket,
+    this.removeTicket,
+    this.showDetail,
+  });
 
   final Ticket ticket;
   final VoidCallback removeTicket;
+  final VoidCallback showDetail;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +23,7 @@ class TicketItem extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
       child: ListTile(
+        onTap: showDetail,
         leading: Icon(Icons.person),
         title: Text(ticket.title),
         subtitle: Text(

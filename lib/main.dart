@@ -1,8 +1,7 @@
-import 'package:provider/provider.dart';
-
 import 'data/ticket_list_model.dart';
 import 'ui/ticket/home/ticket_home.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 

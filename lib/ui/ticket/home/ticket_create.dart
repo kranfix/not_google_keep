@@ -1,9 +1,7 @@
+import '../../../data/ticket_list_model.dart';
+import '../../../models/ticket.dart';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:keep/data/ticket_list_model.dart';
-import 'package:keep/models/ticket.dart';
-import 'package:keep/ui/widgets/keep_button.dart';
 import 'package:provider/provider.dart';
 
 class TicketCreate extends StatefulWidget {
