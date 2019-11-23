@@ -8,7 +8,7 @@ class TicketItem extends StatelessWidget {
     return Container(
       height: 100.0,
       width: 100.0,
-      margin: EdgeInsets.all(5.0),
+      margin: EdgeInsets.all(12.0),
       decoration: BoxDecoration(
         color: Colors.yellow,
         borderRadius: BorderRadius.all(Radius.circular(30.0)),
