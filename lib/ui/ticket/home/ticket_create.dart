@@ -36,45 +36,67 @@ class _TicketCreateState extends State<TicketCreate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text('Agregar nota'),
+          iconTheme: IconThemeData(color: Colors.black),
+          elevation: 1,
+          backgroundColor: Colors.white,
+          title: Text('Agregar nota',
+              style: Theme.of(context)
+                  .textTheme
+                  .headline
+                  .copyWith(fontWeight: FontWeight.bold)),
         ),
         body: Form(
           key: _formKey,
           child: Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              children: <Widget>[
-                TextFormField(
-                  style: Theme.of(context).textTheme.display1,
-                  decoration: InputDecoration.collapsed(
-                    hintText: 'Titulo',
-                  ),
-                  onChanged: (value) => setState(() => _title = value),
-                  validator: (value) =>
-                      value.isEmpty ? 'Campo requerido' : null,
-                ),
-                SizedBox(height: 16),
-                TextFormField(
-                  style: Theme.of(context).textTheme.body1,
-                  maxLines: 6,
-                  decoration: InputDecoration.collapsed(
-                    hintText: 'Nota',
-                  ),
-                  onChanged: (value) => setState(() => _description = value),
-                  validator: (value) =>
-                      value.isEmpty ? 'Campo requerido' : null,
-                ),
-              ],
-            ),
-          ),
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: ListView(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      children: <Widget>[
+                        TextFormField(
+                          style: Theme.of(context).textTheme.display1,
+                          decoration: InputDecoration.collapsed(
+                            hintText: 'Título',
+                          ),
+                          onChanged: (value) => setState(() => _title = value),
+                          validator: (value) =>
+                              value.isEmpty ? 'Campo requerido' : null,
+                        ),
+                        SizedBox(height: 16),
+                        TextFormField(
+                          style: Theme.of(context).textTheme.body1,
+                          maxLines: 10,
+                          decoration: InputDecoration.collapsed(
+                            hintText: 'Nota',
+                          ),
+                          onChanged: (value) =>
+                              setState(() => _description = value),
+                          validator: (value) =>
+                              value.isEmpty ? 'Campo requerido' : null,
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              )),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: Builder(
           builder: (BuildContext context) {
             return FloatingActionButton.extended(
-              label: Text('Guardar Ticket'),
-              icon: Icon(Icons.add),
+              backgroundColor: Colors.white,
+              label: Text(
+                'Guardar Ticket',
+                style: TextStyle(color: Colors.blue),
+              ),
+              icon: Icon(
+                Icons.save,
+                color: Colors.blue,
+              ),
               onPressed: () => _submit(context),
             );
           },
