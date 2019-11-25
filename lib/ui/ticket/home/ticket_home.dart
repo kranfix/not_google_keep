@@ -12,8 +12,13 @@ class TicketHome extends StatelessWidget {
   }
 
   _goDetailTicket(context, ticket) {
-    Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => TicketDetail(ticket: ticket)));
+    Navigator.of(context).push(new MaterialPageRoute<Null>(
+        builder: (BuildContext context) {
+          return TicketDetail(
+            ticket: ticket,
+          );
+        },
+        fullscreenDialog: true));
   }
 
   _goAddPage(context) {
@@ -26,11 +31,22 @@ class TicketHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFEBEEF1),
       appBar: AppBar(
-        title: Text('Tickets'),
+        backgroundColor: Colors.white,
+        elevation: 1,
+        title: Text('Tickets',
+            style: Theme.of(context)
+                .textTheme
+                .headline
+                .copyWith(fontWeight: FontWeight.bold)),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        backgroundColor: Colors.white,
+        child: Icon(
+          Icons.add,
+          color: Colors.blue,
+        ),
         onPressed: () => _goAddPage(context),
       ),
       body: Consumer<TicketListModel>(

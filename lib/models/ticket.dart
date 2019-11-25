@@ -13,13 +13,26 @@
 //   String get title => _title ?? "Untitled";
 // }
 
+import 'dart:math';
+import 'package:flutter/material.dart';
+
 class Ticket {
   final String id;
   final String title;
   final String description;
+  final MaterialColor cardColor;
 
   Ticket({String id, String title, String description})
       : this.id = id ?? '',
         this.title = title ?? 'untitled',
-        this.description = description ?? '';
+        this.description = description ?? '',
+        this.cardColor = colors[Random().nextInt(5)];
 }
+
+final List colors = [
+  Colors.pink,
+  Colors.blue,
+  Colors.amber,
+  Colors.cyan,
+  Colors.deepPurple
+];
