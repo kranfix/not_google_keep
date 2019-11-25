@@ -90,7 +90,7 @@ class _TicketCreateState extends State<TicketCreate> {
             return FloatingActionButton.extended(
               backgroundColor: Colors.white,
               label: Text(
-                'Guardar Ticket',
+                'Guardar Nota',
                 style: TextStyle(color: Colors.blue),
               ),
               icon: Icon(
