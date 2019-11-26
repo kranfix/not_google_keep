@@ -26,7 +26,7 @@ class Ticket {
       : this.id = id ?? '',
         this.title = title ?? 'untitled',
         this.description = description ?? '',
-        this.cardColor = colors[Random().nextInt(5)];
+        this.cardColor = colors[Random().nextInt(colors.length)];
 }
 
 final List colors = [
