@@ -35,54 +35,56 @@ class _TicketCreateState extends State<TicketCreate> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.black),
           elevation: 1,
           backgroundColor: Colors.white,
-          title: Text('Agregar nota',
-              style: Theme.of(context)
-                  .textTheme
-                  .headline
-                  .copyWith(fontWeight: FontWeight.bold)),
+          title: Text(
+            'Agregar nota',
+            style:
+                theme.textTheme.headline.copyWith(fontWeight: FontWeight.bold),
+          ),
         ),
         body: Form(
           key: _formKey,
           child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: ListView(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      children: <Widget>[
-                        TextFormField(
-                          style: Theme.of(context).textTheme.display1,
-                          decoration: InputDecoration.collapsed(
-                            hintText: 'Título',
-                          ),
-                          onChanged: (value) => setState(() => _title = value),
-                          validator: (value) =>
-                              value.isEmpty ? 'Campo requerido' : null,
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: ListView(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    children: <Widget>[
+                      TextFormField(
+                        style: Theme.of(context).textTheme.display1,
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'Título',
                         ),
-                        SizedBox(height: 16),
-                        TextFormField(
-                          style: Theme.of(context).textTheme.body1,
-                          maxLines: 10,
-                          decoration: InputDecoration.collapsed(
-                            hintText: 'Nota',
-                          ),
-                          onChanged: (value) =>
-                              setState(() => _description = value),
-                          validator: (value) =>
-                              value.isEmpty ? 'Campo requerido' : null,
+                        onChanged: (value) => setState(() => _title = value),
+                        validator: (value) =>
+                            value.isEmpty ? 'Campo requerido' : null,
+                      ),
+                      SizedBox(height: 16),
+                      TextFormField(
+                        style: theme.textTheme.body1,
+                        maxLines: 10,
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'Nota',
                         ),
-                      ],
-                    ),
-                  )
-                ],
-              )),
+                        onChanged: (value) =>
+                            setState(() => _description = value),
+                        validator: (value) =>
+                            value.isEmpty ? 'Campo requerido' : null,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: Builder(

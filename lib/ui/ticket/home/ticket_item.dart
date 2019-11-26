@@ -11,6 +11,7 @@ class TicketItem extends StatelessWidget {
   final Ticket ticket;
   final VoidCallback removeTicket;
   final VoidCallback showDetail;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,10 +34,7 @@ class TicketItem extends StatelessWidget {
             color: ticket.cardColor[200].withOpacity(0.7),
             blurRadius: 8.0,
             spreadRadius: 2.0,
-            offset: Offset(
-              1.0,
-              1.0,
-            ),
+            offset: Offset(1.0, 1.0),
           )
         ],
       ),
@@ -56,46 +54,47 @@ class TicketItem extends StatelessWidget {
             ),
           ),
           ListTile(
-              onTap: showDetail,
-              leading: CircleAvatar(
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.person,
-                  color: ticket.cardColor,
-                ),
+            onTap: showDetail,
+            leading: CircleAvatar(
+              backgroundColor: Colors.white,
+              child: Icon(
+                Icons.person,
+                color: ticket.cardColor,
               ),
-              title: Text(
-                ticket.title,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline
-                    .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-                softWrap: true,
-              ),
-              subtitle: Text(
-                ticket.description,
-                style: Theme.of(context)
-                    .textTheme
-                    .subhead
-                    .copyWith(fontWeight: FontWeight.w300),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 3,
-                softWrap: true,
-              ),
-              trailing: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(
-                      Icons.delete,
-                      color: Colors.white,
-                    ),
-                    onPressed: removeTicket,
+            ),
+            title: Text(
+              ticket.title,
+              style: Theme.of(context)
+                  .textTheme
+                  .headline
+                  .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              softWrap: true,
+            ),
+            subtitle: Text(
+              ticket.description,
+              style: Theme.of(context)
+                  .textTheme
+                  .subhead
+                  .copyWith(fontWeight: FontWeight.w300),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 3,
+              softWrap: true,
+            ),
+            trailing: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(
+                    Icons.delete,
+                    color: Colors.white,
                   ),
-                ],
-              )),
+                  onPressed: removeTicket,
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
