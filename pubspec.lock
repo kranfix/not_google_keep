@@ -102,6 +102,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.7"
+  nuid:
+    dependency: "direct main"
+    description:
+      name: nuid
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.7.2"
   path:
     dependency: transitive
     description:

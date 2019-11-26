@@ -7,26 +7,17 @@ import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 class TicketHome extends StatelessWidget {
-  _removeTicket(context, id) {
-    Provider.of<TicketListModel>(context).removeTicket(id);
-  }
+  static void _removeTicket(context, id) =>
+      Provider.of<TicketListModel>(context).removeTicket(id);
 
-  _goDetailTicket(context, ticket) {
-    Navigator.of(context).push(new MaterialPageRoute<Null>(
-        builder: (BuildContext context) {
-          return TicketDetail(
-            ticket: ticket,
-          );
-        },
-        fullscreenDialog: true));
-  }
+  static void _goDetailTicket(context, ticket) =>
+      Navigator.of(context).push(MaterialPageRoute<Null>(
+        builder: (BuildContext context) => TicketDetail(ticket: ticket),
+        fullscreenDialog: true,
+      ));
 
-  _goAddPage(context) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (BuildContext context) {
-      return TicketCreate();
-    }));
-  }
+  static void _goAddPage(context) => Navigator.of(context)
+      .push(MaterialPageRoute(builder: (_) => TicketCreate()));
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +26,13 @@ class TicketHome extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
-        title: Text('Tickets',
-            style: Theme.of(context)
-                .textTheme
-                .headline
-                .copyWith(fontWeight: FontWeight.bold)),
+        title: Text(
+          'Tickets',
+          style: Theme.of(context)
+              .textTheme
+              .headline
+              .copyWith(fontWeight: FontWeight.bold),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.white,

@@ -46,10 +46,7 @@ class TicketDetail extends StatelessWidget {
                   color: Colors.blueGrey[200].withOpacity(0.2),
                   blurRadius: 8.0,
                   spreadRadius: 2.0,
-                  offset: Offset(
-                    1.0,
-                    1.0,
-                  ),
+                  offset: Offset(1.0, 1.0),
                 )
               ],
             ),
