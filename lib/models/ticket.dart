@@ -1,3 +1,5 @@
+import 'package:nuid/nuid.dart';
+
 // import 'package:flutter/widgets.dart';
 
 /*class Ticket{
@@ -23,7 +25,7 @@ class Ticket {
   final MaterialColor cardColor;
 
   Ticket({String id, String title, String description})
-      : this.id = id ?? '',
+      : this.id = id ?? nuid.next(), // Ensure a different id
         this.title = title ?? 'untitled',
         this.description = description ?? '',
         this.cardColor = colors[Random().nextInt(colors.length)];

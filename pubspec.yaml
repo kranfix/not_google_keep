@@ -1,7 +1,6 @@
 name: keep
 description: A new Flutter application.
 
-
 version: 1.0.0+1
 
 environment:
@@ -11,9 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   cupertino_icons: ^0.1.2
   provider: 3.1.0+1
+  nuid: ^0.7.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -24,12 +23,8 @@ flutter_icons:
   ios: true
   image_path: "assets/keep-icon.png"
 
-
 flutter:
-
-
   uses-material-design: true
 
-
   assets:
-   - assets/keep-icon.png
+    - assets/keep-icon.png
