@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 class TicketHome extends StatelessWidget {
   static void _removeTicket(context, id) =>
       Provider.of<TicketListModel>(context).removeTicket(id);
-
+  static void _cleanTickets(context)=>Provider.of<TicketListModel>(context).cleanTickets();
   static void _goDetailTicket(context, ticket) =>
       Navigator.of(context).push(MaterialPageRoute<Null>(
         builder: (BuildContext context) => TicketDetail(ticket: ticket),
@@ -24,6 +24,14 @@ class TicketHome extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFEBEEF1),
       appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.restore_from_trash,color: Colors.black,),
+              onPressed: () {
+                _cleanTickets(context);
+              },
+            ),
+        ],
         backgroundColor: Colors.white,
         elevation: 1,
         title: Text(
@@ -50,10 +58,16 @@ class TicketHome extends StatelessWidget {
             itemCount: ticketListModel.tickets.length,
             itemBuilder: (BuildContext context, int index) {
               final Ticket ticket = ticketListModel.tickets[index];
-              return TicketItem(
+              return Dismissible(
+                key: Key(ticket.id),
+                onDismissed: (_){
+                  _removeTicket(context, ticket.id);
+                },
+                child: TicketItem(
                 ticket: ticket,
                 removeTicket: () => _removeTicket(context, ticket.id),
                 showDetail: () => _goDetailTicket(context, ticket),
+              ),
               );
             },
           );
