@@ -16,4 +16,8 @@ class TicketListModel extends ChangeNotifier {
     _tickets.removeWhere((t) => t.id == id);
     notifyListeners();
   }
+  cleanTickets() {
+    _tickets.clear();
+    notifyListeners();
+  }
 }

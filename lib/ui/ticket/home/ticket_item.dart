@@ -58,7 +58,7 @@ class TicketItem extends StatelessWidget {
             leading: CircleAvatar(
               backgroundColor: Colors.white,
               child: Icon(
-                Icons.person,
+                Icons.note,
                 color: ticket.cardColor,
               ),
             ),

@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider<TicketListModel>(
       builder: (BuildContext context) => TicketListModel(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Keep',
         theme: ThemeData(
           primarySwatch: Colors.blue,
