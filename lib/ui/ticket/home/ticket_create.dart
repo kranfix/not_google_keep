@@ -14,6 +14,9 @@ class _TicketCreateState extends State<TicketCreate> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String _title;
   String _description;
+  final TextStyle _hintStyle = TextStyle(fontSize: 20);
+  final FocusNode _titleFocus = FocusNode();
+  final FocusNode _descriptionFocus = FocusNode();
 
   _submit(context) {
     if (_formKey.currentState.validate()) {
@@ -28,11 +31,11 @@ class _TicketCreateState extends State<TicketCreate> {
       Navigator.of(context).pop();
     } else {
       Scaffold.of(context).showSnackBar(SnackBar(
-        content: Text('Error'),
+        content: Text('Ingresar campos obligatorios.'),
       ));
     }
   }
-
+  
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -59,7 +62,15 @@ class _TicketCreateState extends State<TicketCreate> {
                   child: Column(
                     children: <Widget>[
                       TextFormField(
+                        autofocus: true,
+                        focusNode: _titleFocus,
+                        onFieldSubmitted: (_) {
+                          _titleFocus.unfocus();
+                          FocusScope.of(context)
+                              .requestFocus(_descriptionFocus);
+                        },
                         style: Theme.of(context).textTheme.display1,
+                        textInputAction: TextInputAction.next,
                         decoration: InputDecoration.collapsed(
                           hintText: 'Título',
                         ),
@@ -69,11 +80,11 @@ class _TicketCreateState extends State<TicketCreate> {
                       ),
                       SizedBox(height: 16),
                       TextFormField(
+                        focusNode: _descriptionFocus,
                         style: theme.textTheme.body1,
                         maxLines: 10,
                         decoration: InputDecoration.collapsed(
-                          hintText: 'Nota',
-                        ),
+                            hintText: 'Nota', hintStyle: _hintStyle),
                         onChanged: (value) =>
                             setState(() => _description = value),
                         validator: (value) =>
